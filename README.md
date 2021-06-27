@@ -25,3 +25,4 @@ In addition, variables such as Gender, Company Type, and WFH Setup Available val
 #### Building the Model
 I am using Linear Regression as the machine learning model to predict employee burnout rate.
 After training the model in pandas I have to do pickle.dump command to serialize objects so they can be saved to a file, and Loaded in a program again later on.
+![Screenshot](sharice/pickle_pandas.png)
