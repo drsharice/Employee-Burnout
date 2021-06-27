@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Burnrate quiz</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="/static/css/style.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial;
+        }
+        h1 {
+            text-shadow: 2px 2px 5px red;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        div.container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="login">
+        <h1 style=" text-align: center;">Predict Your Burnout Rate</h1>
+       
+        <div class="container">
+            <center><h3>Enter the following values to predict your burnout rate</h3></center>
+
+
+            <!--Main Input For Recieving Query to our ML-->
+
+                <form action="{{url_for('predict')}}" method="post">
+                    
+                        <label for="Gender"><strong>Gender of the employee: 0 = Male and 1 = Female</strong></label>
+                      
+                            <select name="Gender" id="Gender" class="form-control">
+                                <option value=""></option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                   
+
+                        <br><br>
+                        <label for="Company"><strong>Company Type (The company category) 0 = Service and 1 = Product</strong></label><br />
+                        <select name="Company" id="Company">
+                            <option value=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                        </select>
+                        <br><br>
+                        <label for="WFH"><strong> WFH Setup Available (Whether proper work from home setup is available or not) 0 = No and 1 = Yes</strong></label><br />
+                        <select name="WFH" id="WFH">
+                            <option value=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                        </select>
+                        <br><br>
+                        <label for="Designation"><strong>Designation (Seniority level of the employee in codes): values between(0.0 to 5.0)</strong></label><br />
+                        <input type="text" name="Designation" placeholder="Designation" required="required" /><br /><br />
+                        <label for="Resource"><strong>Resource Allocation (The numbers of hours the employee works) : values between (1.0, 10.0)</strong></label><br />
+                        <input type="text" name="Resource" placeholder="Resource" required="required" /><br /><br />
+                        <label for="Mental"><strong>Mental (stress rating provided by the employee): values between (0.0, 10.0)</strong></label><br />
+                        <input type="text" name="Mental" placeholder="Mental" required="required" /><br /><br />
+
+                        <input type="submit" value="Predict" />
+
+                </form>
+           
+        </div>
+  
+        <center>  <strong>Burn Rate: The burn out rate should be between (0.0, 1.0) higher value the more burnout</strong></center>
+       
+        <center><strong> {{ prediction_text }}</strong></center>
+    </div>
+
+</body>
+</html>
