@@ -1,4 +1,4 @@
-# Employee-Burnout
+# Employee-Burnout Rate
 This is a machine learning project that predicts employee burnout rate. Since the pandemic, employers have noticed an alarming amount of their employees becoming burnout at work. Burnout can be best described as the physical or mental exhaustion of an individual.  HackerEarth provided a train and test dataset in Kaggle that will allow machine learning engineers predict burnout rate. Several variables were presented to use, to build the machine learning model. I used the following variables in my machine learning model:
 ![Screenshot](sharice/EBRVariable.png)
 The first step of this project was to import the train.csv file into pandas which are displayed in the employee_burnout.ipnyb file located in the Sharice folder.
